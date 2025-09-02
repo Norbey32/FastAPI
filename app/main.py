@@ -4,13 +4,14 @@ from fastapi import FastAPI
 from db import create_all_tables
 from models import Transaction, Invoice
 from sqlmodel import select
-from app.routers import customers, transactions
+from app.routers import customers, plans, transactions
 
 
 
 app = FastAPI(lifespan=create_all_tables)
 app.include_router(customers.router)
 app.include_router(transactions.router)
+app.include_router(plans.router)
 
 
 @app.get("/")
